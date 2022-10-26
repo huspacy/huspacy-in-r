@@ -1,8 +1,6 @@
 # HuSpaCy in R
 
-Jupyter+R: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/huspacy/huspacy-in-r/master?filepath=index.ipynb)
-
-RStudio: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/huspacy/huspacy-in-r/master?urlpath=rstudio)
+Jupyter+R: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/huspacy/huspacy-in-r/master?filepath=demo.ipynb)
 
 This repository presents a minimal working prototype to use HuSpaCy models from r.
 

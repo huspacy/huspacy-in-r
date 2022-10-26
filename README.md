@@ -1,21 +1,30 @@
-# r-conda
+# HuSpaCy in R
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/betatim/r-conda/master?urlpath=rstudio)
+Jupyter+R: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/huspacy/huspacy-in-r/master?filepath=index.ipynb)
 
-> R and RStudio in repo2docker without waiting for packages to compile!
+RStudio: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/huspacy/huspacy-in-r/master?urlpath=rstudio)
 
-Jupyter+R: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r-conda/master?filepath=index.ipynb)
+This repository presents a minimal working prototype to use HuSpaCy models from r.
 
-RStudio: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r-conda/master?urlpath=rstudio)
+## Reproducing it locally
 
-Binder supports using R and RStudio, with libraries pinned to a specific versions.
+1. Make sure you have conda installed
+2. Create a new environment using the provided `environemnt.yml` file: `$ conda env create -n huspacyr --file ./environment.yml`
+3. Activate the environment: `$ conda activate huspacyr`
 
-Install R itself and your required R packages via conda packages. Installing conda packages is faster than
-installing CRAN packages. This is because CRAN packages need compiling during the install process and conda
-packages do not.
+Having all dependencies installed, all you need to do is to load `spacyr` in the installed environment:
 
-For some R packages there is no corresponding conda-forge package yet, in that case take a look at https://github.com/binder-examples/r. Note that these two approaches cannot be combined, so you cannot install R packages via Conda and via an `install.R` file at the same time. You can check if a required R package is available on the Conda Forge website at https://conda-forge.org/feedstock-outputs/ by searching for `r-PACKAGENAME`. You can install R packges from other sources using a `postBuild` script.
+```R
+library("spacyr")
 
-Both [RStudio](https://www.rstudio.com/) and [IRKernel](https://irkernel.github.io/)
-are installed by default, so you can use either the Jupyter notebook interface or
-the RStudio interface.
+# Loads the model installed to the conda environment
+spacy_initialize(model = "hu_core_news_lg")
+```
+
+HuSpaCy model should now parse any texts:
+
+```R
+txt <- c(d1="Csiribiri csiribiri zabszalma,", d2="négy csillag közt alszom ma.")
+parsedtxt <- spacy_parse(txt)
+```
+
